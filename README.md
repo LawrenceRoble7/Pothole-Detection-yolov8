@@ -1,1 +1,1 @@
-# Pothole Detection - Capstone Research
+# Pothole Detection - Capstone Research Project
