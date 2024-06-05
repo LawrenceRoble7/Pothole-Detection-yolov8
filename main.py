@@ -12,7 +12,7 @@ def Split_Class_List(file_path):
 
 def main():
     VIDEO_SOURCE_PATH = "inferences/videos/sample_video2.mp4"
-    yolov8_weights = "weights/yolov8_pothole_weights.pt"
+    yolov8_weights = "weights/yolov8_pothole_weights_v1.pt"
     COCO_FILE_PATH = "utils/coco.names"
 
     model = YOLO(yolov8_weights, "v8")
