@@ -11,7 +11,7 @@ def Split_Class_List(file_path):
     return class_list
 
 def main():
-    VIDEO_SOURCE_PATH = "inferences/videos/sample_video2.mp4"
+    VIDEO_SOURCE_PATH = "inferences/videos/sample_video1.mp4"
     yolov8_weights = "weights/yolov8n_pothole_weights.pt"
     COCO_FILE_PATH = "utils/coco.names"
 
@@ -44,16 +44,14 @@ def main():
             confidence = round(row[4], 5)
             detected_class_index = int(row[5])
             class_ID_name = class_list[detected_class_index]
-
-            w, h = x2 - x1, y2 - y1
-            rec_pos = (x1, y1, w, h)
-            text_pos = (x1, y1-10)
+            start_point, end_point = [(x1, y1), (x2, y2)]
+            text_pos = (x1, y1 - 10)
 
             font = cv2.FONT_HERSHEY_COMPLEX
             clsID_and_Conf = f"{class_ID_name} {confidence}%"
             box_color = (255, 100, 100)
 
-            cv2.rectangle(frame, rec_pos, box_color, 2)
+            cv2.rectangle(frame, start_point, end_point, box_color, 2)
             cv2.putText(frame, clsID_and_Conf, text_pos, font, fontScale=0.5, color=(255, 255, 255), thickness=2)
         
         cv2.imshow("SAMPLE DETECTION", frame)
